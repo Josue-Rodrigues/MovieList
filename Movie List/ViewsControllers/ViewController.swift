@@ -69,9 +69,9 @@ class ViewController: UIViewController {
         }
     }
     
-    func recuperarDetalhesFilme(idImagem:String = "19898") {
+    func recuperarDetalhesFilme(idFilme:String = "19898") {
         
-        if let url = URL(string: "https://api.themoviedb.org/3/movie/\(idImagem)?api_key=3762450a6d6933a5ce25ea49eca99ce1") {
+        if let url = URL(string: "https://api.themoviedb.org/3/movie/\(idFilme)?api_key=3762450a6d6933a5ce25ea49eca99ce1") {
             let tarefa = URLSession.shared.dataTask(with: url) { (dados, requisicao, erro) in
                 if erro == nil {
                     if let dados = dados {
@@ -98,6 +98,7 @@ class ViewController: UIViewController {
                             }
                             
                         } catch {
+                            
                             let alerta = Alerta(titulo: "ATENÇÃO!!", mensagem: "Este filme infelizmente saiu de nossa lista. Deseja tentar novamente", botao: "Confirmar")
                             self.present(alerta.getAlerta(), animated: true, completion: nil)
                         }
@@ -152,8 +153,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource  {
         
         let filmeSelecionado = self.filmes[indexPath.row]
         
-        recuperarDetalhesFilme(idImagem: String(filmeSelecionado.id))
-
+        recuperarDetalhesFilme(idFilme: String(filmeSelecionado.id))
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
