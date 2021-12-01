@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Movie List
 //
-//  Created by Valeria Moreira pereira rodrigues on 09/11/21.
+//  Created by Josue Herrera Rodrigues on 09/11/21.
 //
 
 import UIKit
