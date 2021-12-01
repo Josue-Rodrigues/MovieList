@@ -1,17 +1,18 @@
 # MovieList
 
-Projeto mobile desenvolvido em Swift, para listagem de filmes.
+Projeto mobile desenvolvido em **_Swift_**, com a função de listagem e apresentação de detalhe dos filmes.
 
-Foi utilizada a API da themoviedb para recuperar informações dos filmes
+Foi utilizada a API da [**_themoviedb_**](https://developers.themoviedb.org/3/getting-started/introduction) para recuperar informações de detalhe dos filmes.
 
-URL: https://www.themoviedb.org/documentation/api
-Rota para listagem dos filmes: https://api.themoviedb.org/3/movie/550/similar?api_key=3762450a6d6933a5ce25ea49eca99ce1
-Rota para recuperar detalhes do filme: https://api.themoviedb.org/3/movie/(id do filme selecionado)?api_key=3762450a6d6933a5ce25ea49eca99ce1
+- URL: https://www.themoviedb.org/documentation/api
+- Rota para listagem dos filmes: https://api.themoviedb.org/3/movie/550/similar?api_key=3762450a6d6933a5ce25ea49eca99ce1
+- Rota para recuperação dos detalhes do filme: https://api.themoviedb.org/3/movie/19898?api_key=3762450a6d6933a5ce25ea49eca99ce1
 
-Funcionalidades Básicas:
+### Funcionalidades Básicas:
 
--Listagem de filmes
--Seleção de filme
--Apresentação dos detalhes do filme selecionado
--Apresentação da sinopse
--Icone de favoritos
+- Listagem de filmes
+   * _Informação sobre o ano de lançamento e futuramente detalhe sobre o genero do filme_
+- Seleção do filme desejado
+- Apresentação dos detalhes do filme selecionado
+   * _Quantidade de Likes e Visualizações, assim como apresentação da Sinopse do filme selecionado_
+- Icone de favoritos dinamico *(Branco ou Transparente)*
