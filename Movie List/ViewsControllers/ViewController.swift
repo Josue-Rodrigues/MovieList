@@ -118,6 +118,7 @@ class ViewController: UIViewController {
     func alertaDescricao() {
         
         let alerta = Alerta(titulo: filmeRecuperado.titulo, mensagem: filmeRecuperado.descricao, botao: "Exit")
+        
         self.present(alerta.getAlerta(), animated: true, completion: nil)
     }
 }
@@ -153,7 +154,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource  {
         
         let filmeSelecionado = self.filmes[indexPath.row]
         
-        recuperarDetalhesFilme(idFilme: String(filmeSelecionado.id))
+        recuperarDetalhesFilme(idFilme:String(filmeSelecionado.id))
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
