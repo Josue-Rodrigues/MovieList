@@ -1,6 +1,6 @@
 # MovieList
 
-Projeto mobile desenvolvido em **_Swift_**, com a função de listagem e apresentação de detalhe dos filmes.
+Projeto mobile desenvolvido em **_Swift_**, com a função de listagem e apresentação de detalhes dos filmes.
 
 Foi utilizada a API da [**_themoviedb_**](https://developers.themoviedb.org/3/getting-started/introduction) para recuperar informações de detalhe dos filmes.
 
