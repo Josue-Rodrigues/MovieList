@@ -12,5 +12,6 @@ class FilmeCelula: UITableViewCell {
     @IBOutlet weak var imagemFilme: UIImageView!
     @IBOutlet weak var tituloFilme: UILabel!
     @IBOutlet weak var descricaoFilme: UILabel!
+    @IBOutlet weak var generoFilme: UILabel!
     
 }

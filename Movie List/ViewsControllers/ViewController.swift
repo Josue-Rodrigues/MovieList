@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var likeDetalheFilme: UILabel!
     @IBOutlet weak var viewDetalheFilme: UILabel!
     @IBOutlet weak var imagemDetalheFilme: UIImageView!
+    @IBOutlet weak var generoDetalheFilme: UILabel!
     
     @IBOutlet weak var Favoritar: UIButton!
 
@@ -69,9 +70,9 @@ class ViewController: UIViewController {
         }
     }
     
-    func recuperarDetalhesFilme(idFilme:String = "19898") {
+    func recuperarDetalhesFilme(idImagem:String = "19898") {
         
-        if let url = URL(string: "https://api.themoviedb.org/3/movie/\(idFilme)?api_key=3762450a6d6933a5ce25ea49eca99ce1") {
+        if let url = URL(string: "https://api.themoviedb.org/3/movie/\(idImagem)?api_key=3762450a6d6933a5ce25ea49eca99ce1") {
             let tarefa = URLSession.shared.dataTask(with: url) { (dados, requisicao, erro) in
                 if erro == nil {
                     if let dados = dados {
@@ -81,6 +82,7 @@ class ViewController: UIViewController {
                             let detalhesFilme:DetalhesFilmeResponse = try JSONDecoder().decode(DetalhesFilmeResponse.self, from: dados)
                             
                             if let url = NSURL(string: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/\(detalhesFilme.poster_path)") {
+                                
                                 if let data = NSData(contentsOf: url as URL) {
                                     
                                     DispatchQueue.main.async(execute: {
@@ -88,6 +90,7 @@ class ViewController: UIViewController {
                                         self.tituloDetalheFilme.text = String(detalhesFilme.title)
                                         self.likeDetalheFilme.text = String(detalhesFilme.vote_count)
                                         self.viewDetalheFilme.text = String(detalhesFilme.popularity)
+                                        self.generoDetalheFilme.text = String(detalhesFilme.genres[0].name)
                                         self.imagemDetalheFilme.image = UIImage(data: data as Data)
                                         
                                         self.filmeRecuperado.descricao = String(detalhesFilme.overview)
@@ -98,8 +101,8 @@ class ViewController: UIViewController {
                             }
                             
                         } catch {
-                            
                             let alerta = Alerta(titulo: "ATENÇÃO!!", mensagem: "Este filme infelizmente saiu de nossa lista. Deseja tentar novamente", botao: "Confirmar")
+                            
                             self.present(alerta.getAlerta(), animated: true, completion: nil)
                         }
                     }
@@ -118,7 +121,6 @@ class ViewController: UIViewController {
     func alertaDescricao() {
         
         let alerta = Alerta(titulo: filmeRecuperado.titulo, mensagem: filmeRecuperado.descricao, botao: "Exit")
-        
         self.present(alerta.getAlerta(), animated: true, completion: nil)
     }
 }
@@ -136,6 +138,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource  {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let filme = filmes[indexPath.row]
+        
         let celula = tableView.dequeueReusableCell(withIdentifier: "celulaReuso", for: indexPath) as! FilmeCelula
         
         if let url = NSURL(string: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/\(filme.poster_path)") {
@@ -144,6 +147,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource  {
                 celula.imagemFilme.image = UIImage(data: data as Data)!
                 celula.tituloFilme.text = filme.title
                 celula.descricaoFilme.text = filme.release_date
+
             }
         }
         
@@ -154,7 +158,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource  {
         
         let filmeSelecionado = self.filmes[indexPath.row]
         
-        recuperarDetalhesFilme(idFilme:String(filmeSelecionado.id))
+        recuperarDetalhesFilme(idImagem: String(filmeSelecionado.id))
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

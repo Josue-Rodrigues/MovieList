@@ -9,6 +9,7 @@ import UIKit
 
 
 struct ListaFilmeResponse: Codable {
+    
     let results: [ListaFilme]
 }
 
@@ -18,5 +19,5 @@ struct ListaFilme: Codable {
     let release_date: String
     let poster_path: String
     let id: Int64
-}
 
+}

@@ -16,6 +16,13 @@ struct DetalhesFilmeResponse: Codable {
     let release_date: String
     let title: String
     let backdrop_path: String
+    let genres: [GeneroFilme]
+}
+
+struct GeneroFilme: Codable {
+    
+    let id: Int64
+    let name: String
 }
 
 class FilmeSelecionado {

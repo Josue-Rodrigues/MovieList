@@ -8,15 +8,5 @@
 import UIKit
 
 class Filme {
-    
-    var imagem: UIImage
-    var titulo: String
-    var descricao: String
-    
-    init(imagem: UIImage, titulo: String, descricao: String) {
-        
-        self.imagem = imagem
-        self.titulo = titulo
-        self.descricao = descricao
-    }
+
 }
