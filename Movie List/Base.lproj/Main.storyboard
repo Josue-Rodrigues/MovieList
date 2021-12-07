@@ -51,21 +51,13 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2EH-I8-A1Y">
-                                                            <rect key="frame" x="159.66666666666666" y="51.666666666666664" width="45" height="17.999999999999993"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="labelColor"/>
                                                     <constraints>
                                                         <constraint firstItem="Wct-ZG-am0" firstAttribute="leading" secondItem="VbJ-qe-Lr7" secondAttribute="trailing" constant="10" id="5sk-Pd-W38"/>
-                                                        <constraint firstItem="2EH-I8-A1Y" firstAttribute="centerY" secondItem="Wct-ZG-am0" secondAttribute="centerY" id="B8T-rM-qGR"/>
                                                         <constraint firstAttribute="bottom" secondItem="VbJ-qe-Lr7" secondAttribute="bottom" id="BDK-9t-JYY"/>
                                                         <constraint firstItem="Lhf-ll-s6k" firstAttribute="leading" secondItem="VbJ-qe-Lr7" secondAttribute="trailing" constant="10" id="BL1-qG-yNt"/>
                                                         <constraint firstItem="Lhf-ll-s6k" firstAttribute="top" secondItem="O6r-lg-Iww" secondAttribute="topMargin" constant="16" id="HZ2-N0-MP1"/>
-                                                        <constraint firstItem="2EH-I8-A1Y" firstAttribute="leading" secondItem="Wct-ZG-am0" secondAttribute="trailing" constant="10" id="I8j-5m-k7e"/>
                                                         <constraint firstItem="Wct-ZG-am0" firstAttribute="top" secondItem="Lhf-ll-s6k" secondAttribute="bottom" constant="1" id="JRf-Qh-TVC"/>
                                                         <constraint firstItem="VbJ-qe-Lr7" firstAttribute="leading" secondItem="O6r-lg-Iww" secondAttribute="leading" constant="20" id="r6H-si-fFc"/>
                                                         <constraint firstItem="VbJ-qe-Lr7" firstAttribute="top" secondItem="O6r-lg-Iww" secondAttribute="top" constant="5" id="t6p-DI-AKG"/>
@@ -75,7 +67,6 @@
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="descricaoFilme" destination="Wct-ZG-am0" id="uv9-XK-oiu"/>
-                                                    <outlet property="generoFilme" destination="2EH-I8-A1Y" id="wO6-Cb-Wef"/>
                                                     <outlet property="imagemFilme" destination="VbJ-qe-Lr7" id="DgW-Hu-cFg"/>
                                                     <outlet property="tituloFilme" destination="Lhf-ll-s6k" id="S2e-3S-Q2d"/>
                                                 </connections>
