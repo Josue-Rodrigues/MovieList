@@ -7,27 +7,27 @@
 
 import UIKit
 
-class Alerta {
+class Alert {
     
-    var titulo: String
-    var mensagem: String
-    var botao: String
+    var title: String
+    var message: String
+    var button: String
     
-    init(titulo: String, mensagem: String, botao: String) {
+    init(title: String, message: String, button: String) {
         
-        self.titulo = titulo
-        self.mensagem = mensagem
-        self.botao = botao
+        self.title = title
+        self.message = message
+        self.button = button
     }
     
-    func getAlerta () -> UIAlertController {
+    func getAlert () -> UIAlertController {
         
-        let alerta = UIAlertController(title: titulo, message: mensagem, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let botao = UIAlertAction(title: botao, style: .cancel, handler: nil)
+        let button = UIAlertAction(title: button, style: .cancel, handler: nil)
         
-        alerta.addAction(botao)
-        return alerta
+        alert.addAction(button)
+        return alert
         
     }
 }

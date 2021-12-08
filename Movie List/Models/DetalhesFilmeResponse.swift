@@ -25,9 +25,9 @@ struct GeneroFilme: Codable {
     let name: String
 }
 
-class FilmeSelecionado {
+class SelectedMovie {
     
-    var titulo: String = ""
-    var descricao: String = ""
-    var favorito: Bool = false
+    var title: String = ""
+    var description: String = ""
+    var favorite: Bool = false
 }
