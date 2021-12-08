@@ -14,5 +14,5 @@ Foi utilizada a API da [**_themoviedb_**](https://developers.themoviedb.org/3/ge
    * _Informação sobre o ano de lançamento e futuramente detalhe sobre o genero do filme_
 - Seleção do filme desejado
 - Apresentação dos detalhes do filme selecionado
-   * _Quantidade de Likes e Visualizações, assim como apresentação da Sinopse do filme selecionado_
+   * _Quantidade de Likes e Visualizações, assim como apresentação da Sinopse e genero do filme selecionado_
 - Icone de favoritos dinamico *(Branco ou Transparente)*
