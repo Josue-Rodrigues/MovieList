@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct DetalhesFilmeResponse: Codable {
+struct DetailsFilmResponse: Codable {
     
     let overview: String
     let popularity: Double
@@ -16,10 +16,10 @@ struct DetalhesFilmeResponse: Codable {
     let release_date: String
     let title: String
     let backdrop_path: String
-    let genres: [GeneroFilme]
+    let genres: [MovieGenre]
 }
 
-struct GeneroFilme: Codable {
+struct MovieGenre: Codable {
     
     let id: Int64
     let name: String

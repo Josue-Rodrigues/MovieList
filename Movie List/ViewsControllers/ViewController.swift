@@ -10,25 +10,37 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var TableView: UITableView!
-    @IBOutlet weak var tituloDetalheFilme: UILabel!
-    @IBOutlet weak var likeDetalheFilme: UILabel!
-    @IBOutlet weak var viewDetalheFilme: UILabel!
-    @IBOutlet weak var imagemDetalheFilme: UIImageView!
-    @IBOutlet weak var generoDetalheFilme: UILabel!
+    @IBOutlet weak var imageDetailMovie: UIImageView!
+    @IBOutlet weak var titleDetailMovie: UILabel!
+    @IBOutlet weak var likeDetailMovie: UILabel!
+    @IBOutlet weak var viewDetailMovie: UILabel!
+    @IBOutlet weak var genreDetailMovie: UILabel!
+    @IBOutlet weak var favorite: UIButton!
     
-    @IBOutlet weak var Favoritar: UIButton!
-
-    @IBAction func botaoDescricao(_ sender: Any) {
-        alertaDescricao()
+    @IBAction func favoriteButton(_ sender: Any) {
+        
+        recoveredMovie.favorite = !recoveredMovie.favorite
+        
+        if recoveredMovie.favorite {
+            favorite.setImage(UIImage(named: "coracaobranco"), for: .normal)
+            
+        } else {
+            favorite.setImage(UIImage(named: "coracaopreto"), for: .normal)
+        }
+    }
+    
+    @IBAction func buttonDescription(_ sender: Any) {
+        
+        alertDescription()
     }
     
     var recoveredMovie:SelectedMovie = SelectedMovie()
-    var movies:[ListaFilme] = []
+    var movies:[MovieList] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Favoritar.setImage(UIImage(named: "coracaopreto"), for: .normal)
+        favorite.setImage(UIImage(named: "coracaopreto"), for: .normal)
         
         recoverMovieList()
         recoverMovieDetails()
@@ -37,15 +49,13 @@ class ViewController: UIViewController {
     func recoverMovieList() {
         
         if let url = URL(string: "https://api.themoviedb.org/3/movie/550/similar?api_key=3762450a6d6933a5ce25ea49eca99ce1") {
-            let tarefa = URLSession.shared.dataTask(with: url) { (data, request, error) in
-                
+            let task = URLSession.shared.dataTask(with: url) { (data, request, error) in
                 if error == nil {
-                    
                     if let dataApi = data {
                         
                         do {
                             
-                            let listMovie:ListaFilmeResponse = try JSONDecoder().decode(ListaFilmeResponse.self, from: dataApi)
+                            let listMovie:MovieListResponse = try JSONDecoder().decode(MovieListResponse.self, from: dataApi)
                             
                             DispatchQueue.main.async(execute: {
                                 
@@ -55,6 +65,7 @@ class ViewController: UIViewController {
                             })
                             
                         } catch {
+                            
                             print("Erro ao formatar JSON")
                         }
                     }
@@ -66,20 +77,20 @@ class ViewController: UIViewController {
                 }
             }
             
-            tarefa.resume()
+            task.resume()
         }
     }
     
-    func recoverMovieDetails(idImage:String = "19898") {
+    func recoverMovieDetails(idImage:String = "479226") {
         
         if let url = URL(string: "https://api.themoviedb.org/3/movie/\(idImage)?api_key=3762450a6d6933a5ce25ea49eca99ce1") {
-            let tarefa = URLSession.shared.dataTask(with: url) { (data, request, error) in
+            let task = URLSession.shared.dataTask(with: url) { (data, request, error) in
                 if error == nil {
                     if let dataApi = data {
                         
                         do {
                             
-                            let detailsMovie:DetalhesFilmeResponse = try JSONDecoder().decode(DetalhesFilmeResponse.self, from: dataApi)
+                            let detailsMovie:DetailsFilmResponse = try JSONDecoder().decode(DetailsFilmResponse.self, from: dataApi)
                             
                             if let url = NSURL(string: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/\(detailsMovie.poster_path)") {
                                 
@@ -87,11 +98,11 @@ class ViewController: UIViewController {
                                     
                                     DispatchQueue.main.async(execute: {
                                         
-                                        self.tituloDetalheFilme.text = String(detailsMovie.title)
-                                        self.likeDetalheFilme.text = String(detailsMovie.vote_count)
-                                        self.viewDetalheFilme.text = String(detailsMovie.popularity)
-                                        self.generoDetalheFilme.text = String(detailsMovie.genres[0].name)
-                                        self.imagemDetalheFilme.image = UIImage(data: dataImage as Data)
+                                        self.titleDetailMovie.text = String(detailsMovie.title)
+                                        self.likeDetailMovie.text = String(detailsMovie.vote_count)
+                                        self.viewDetailMovie.text = String(detailsMovie.popularity)
+                                        self.genreDetailMovie.text = String(detailsMovie.genres[0].name)
+                                        self.imageDetailMovie.image = UIImage(data: dataImage as Data)
                                         
                                         self.recoveredMovie.description = String(detailsMovie.overview)
                                         self.recoveredMovie.title = String(detailsMovie.title)
@@ -114,11 +125,11 @@ class ViewController: UIViewController {
                 }
             }
             
-            tarefa.resume()
+            task.resume()
         }
     }
     
-    func alertaDescricao() {
+    func alertDescription() {
         
         let alert = Alert(title: recoveredMovie.title, message: recoveredMovie.description, button: "Exit")
         self.present(alert.getAlert(), animated: true, completion: nil)
@@ -144,10 +155,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource  {
         if let url = NSURL(string: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/\(movie.poster_path)") {
             if let data = NSData(contentsOf: url as URL) {
                 
-                cell.imagemFilme.image = UIImage(data: data as Data)!
-                cell.tituloFilme.text = movie.title
-                cell.descricaoFilme.text = movie.release_date
-
+                cell.imageMovieList.image = UIImage(data: data as Data)!
+                cell.titleMovieList.text = movie.title
+                cell.dateMovieList.text = movie.release_date
             }
         }
         
@@ -160,22 +170,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource  {
         
         recoverMovieDetails(idImage: String(selectedMovie.id))
         
+        print(selectedMovie.id)
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
-    }
-    
-    @IBAction func botaoFavorito(_ sender: Any) {
-        
-        recoveredMovie.favorite = !recoveredMovie.favorite
-        
-        if recoveredMovie.favorite {
-            Favoritar.setImage(UIImage(named: "coracaobranco"), for: .normal)
-            
-        } else {
-            Favoritar.setImage(UIImage(named: "coracaopreto"), for: .normal)
-        }
     }
 }
 

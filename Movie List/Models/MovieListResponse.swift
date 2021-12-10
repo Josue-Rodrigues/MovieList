@@ -8,12 +8,12 @@
 import UIKit
 
 
-struct ListaFilmeResponse: Codable {
+struct MovieListResponse: Codable {
     
-    let results: [ListaFilme]
+    let results: [MovieList]
 }
 
-struct ListaFilme: Codable {
+struct MovieList: Codable {
     
     let title: String
     let release_date: String

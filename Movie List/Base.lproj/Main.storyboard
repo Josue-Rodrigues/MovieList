@@ -66,9 +66,9 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="descricaoFilme" destination="Wct-ZG-am0" id="uv9-XK-oiu"/>
-                                                    <outlet property="imagemFilme" destination="VbJ-qe-Lr7" id="DgW-Hu-cFg"/>
-                                                    <outlet property="tituloFilme" destination="Lhf-ll-s6k" id="S2e-3S-Q2d"/>
+                                                    <outlet property="dateMovieList" destination="Wct-ZG-am0" id="7EW-Xn-fxc"/>
+                                                    <outlet property="imageMovieList" destination="VbJ-qe-Lr7" id="J46-CD-2sH"/>
+                                                    <outlet property="titleMovieList" destination="Lhf-ll-s6k" id="O9E-XY-urW"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -93,7 +93,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="coracaobranco" title=""/>
                                         <connections>
-                                            <action selector="botaoFavorito:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XXY-JK-8rr"/>
+                                            <action selector="favoriteButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WLa-rs-o84"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Missão Impossivel" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COH-pP-hva">
@@ -155,7 +155,7 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="botaoDescricao:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MkE-LR-9By"/>
+                                            <action selector="buttonDescription:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y0x-gF-PRa"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ylz-6Y-wZ9">
@@ -225,13 +225,13 @@
                     </view>
                     <size key="freeformSize" width="428" height="1200"/>
                     <connections>
-                        <outlet property="Favoritar" destination="nDa-4S-Yco" id="J2k-gd-HqN"/>
                         <outlet property="TableView" destination="Cqd-7z-H9m" id="1Bi-Cn-cof"/>
-                        <outlet property="generoDetalheFilme" destination="kj6-BH-X7b" id="LbM-VK-YwJ"/>
-                        <outlet property="imagemDetalheFilme" destination="nMg-R5-bFf" id="If2-iC-0ir"/>
-                        <outlet property="likeDetalheFilme" destination="2lJ-pU-IWx" id="CHe-Y5-QPX"/>
-                        <outlet property="tituloDetalheFilme" destination="COH-pP-hva" id="4z9-D0-xXu"/>
-                        <outlet property="viewDetalheFilme" destination="FeY-lw-XX0" id="COw-5H-Gbj"/>
+                        <outlet property="favorite" destination="nDa-4S-Yco" id="9iu-He-9Au"/>
+                        <outlet property="genreDetailMovie" destination="kj6-BH-X7b" id="T8c-4t-VMm"/>
+                        <outlet property="imageDetailMovie" destination="nMg-R5-bFf" id="dXO-B3-Zbh"/>
+                        <outlet property="likeDetailMovie" destination="2lJ-pU-IWx" id="b5f-7A-Td8"/>
+                        <outlet property="titleDetailMovie" destination="COH-pP-hva" id="S5z-Qg-kck"/>
+                        <outlet property="viewDetailMovie" destination="FeY-lw-XX0" id="9oL-iJ-JMb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
